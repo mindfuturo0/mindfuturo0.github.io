@@ -1,27 +1,5 @@
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MindFuturo • Testes Inteligentes</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-      color: #fff;
-    }
-    header {
-      padding: 50px 20px;
-      text-align: center;
-    }
-    header h1 { font-size: 2.5rem; margin-bottom: 10px; }
-    header p { opacity: 0.8; }
-
-    .container {
+   .container {
       max-width: 1100px;
       margin: auto;
       padding: 20px;
