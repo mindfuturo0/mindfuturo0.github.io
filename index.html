@@ -37,4 +37,102 @@ header{text-align:center;padding:50px 20px}
 </header>
 
 <section class="container" id="home">
-<div class="card" oncli
+<div class="card" onclick="startTest('futuro')">🔮 Teste do Futuro Financeiro</div>
+<div class="card" onclick="startTest('nivel')">🧠 Teste de Nível Mental</div>
+<div class="card" onclick="startTest('personalidade')">👤 Teste de Personalidade</div>
+</section>
+
+<section class="screen" id="quiz">
+<div class="progress"><div id="bar"></div></div>
+<h2 id="question"></h2>
+<div id="options"></div>
+</section>
+
+<section class="screen" id="loading">
+<h2>Calculando resultado...</h2>
+</section>
+
+<section class="screen" id="result">
+<h2 id="resultTitle"></h2>
+<p id="resultText"></p>
+<div class="cta" onclick="goAffiliate()">Ver recomendação</div>
+</section>
+
+<script>
+let currentType="",index=0;
+
+const quizzes={
+futuro:[
+"Você planeja seu dinheiro?","Você guarda parte do que ganha?","Você pensa a longo prazo?",
+"Você busca renda extra?","Você controla gastos?","Você estuda finanças?",
+"Você aprende com erros financeiros?","Você evita dívidas?","Você investe?",
+"Seu futuro financeiro tende a ser?"
+],
+nivel:[
+"Você mantém foco fácil?","Você aprende rápido?","Você controla emoções?",
+"Você resolve problemas sob pressão?","Você se concentra bem?",
+"Você é disciplinado?","Você termina o que começa?",
+"Você planeja antes de agir?","Você aprende com erros?",
+"Seu nível mental é?"
+],
+personalidade:[
+"Você é racional?","Você prefere liderar?","Você se adapta bem?",
+"Você age por lógica?","Você é comunicativo?",
+"Você gosta de rotina?","Você reage bem a conflitos?",
+"Você improvisa fácil?","Você toma decisões rápidas?",
+"Seu perfil geral é?"
+]
+};
+
+function startTest(type){
+currentType=type;
+index=0;
+document.getElementById("home").style.display="none";
+document.getElementById("quiz").style.display="block";
+loadQuestion();
+}
+
+function loadQuestion(){
+document.getElementById("question").innerText=quizzes[currentType][index];
+document.getElementById("options").innerHTML=
+"<div class='option' onclick='next()'>Sim</div>"+
+"<div class='option' onclick='next()'>Às vezes</div>"+
+"<div class='option' onclick='next()'>Não</div>";
+document.getElementById("bar").style.width=((index+1)/10*100)+"%";
+}
+
+function next(){
+index++;
+if(index<10) loadQuestion();
+else{
+document.getElementById("quiz").style.display="none";
+document.getElementById("loading").style.display="block";
+setTimeout(showResult,2000);
+}
+}
+
+function showResult(){
+document.getElementById("loading").style.display="none";
+document.getElementById("result").style.display="block";
+
+if(currentType==="futuro"){
+resultTitle.innerText="Futuro Financeiro Promissor";
+resultText.innerText="Seu perfil indica estabilidade e crescimento financeiro acima da média.";
+}
+if(currentType==="nivel"){
+resultTitle.innerText="Alto Nível Mental";
+resultText.innerText="Sua capacidade cognitiva está acima de 80% das pessoas.";
+}
+if(currentType==="personalidade"){
+resultTitle.innerText="Perfil Estratégico";
+resultText.innerText="Você age com lógica, adaptação e controle emocional.";
+}
+}
+
+function goAffiliate(){
+window.location.href="https://SEULINKAFILIADO.com";
+}
+</script>
+
+</body>
+</html>
