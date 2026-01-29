@@ -96,79 +96,135 @@ header{text-align:center;padding:50px 20px}
 </section>
 
 <script>
-let currentType="",index=0;
+  const quizzes = {
+    futuro: [
+      { q:'Você pensa no seu futuro financeiro?', o:['Sempre','Às vezes','Nunca'], p:[3,2,1] },
+      { q:'Você planeja seus gastos?', o:['Sempre','Às vezes','Nunca'], p:[3,2,1] },
+      { q:'Você guarda dinheiro?', o:['Sim','Às vezes','Não'], p:[3,2,1] },
+      { q:'Você investe?', o:['Sempre','Às vezes','Nunca'], p:[3,2,1] },
+      { q:'Você busca renda extra?', o:['Sempre','Às vezes','Nunca'], p:[3,2,1] },
+      { q:'Você estuda finanças?', o:['Sempre','Às vezes','Nunca'], p:[3,2,1] },
+      { q:'Você controla dívidas?', o:['Bem','Mais ou menos','Mal'], p:[3,2,1] },
+      { q:'Você pensa antes de gastar?', o:['Sempre','Às vezes','Nunca'], p:[3,2,1] },
+      { q:'Você aprende com erros financeiros?', o:['Sim','Às vezes','Não'], p:[3,2,1] },
+      { q:'Seu futuro financeiro tende a ser:', o:['Próspero','Estável','Incerto'], p:[3,2,1] }
+    ],
 
-const quizzes={
-futuro:[
-"Você planeja seu dinheiro?","Você guarda parte do que ganha?","Você pensa a longo prazo?",
-"Você busca renda extra?","Você controla gastos?","Você estuda finanças?",
-"Você aprende com erros financeiros?","Você evita dívidas?","Você investe?",
-"Seu futuro financeiro tende a ser?"
-],
-nivel:[
-"Você mantém foco fácil?","Você aprende rápido?","Você controla emoções?",
-"Você resolve problemas sob pressão?","Você se concentra bem?",
-"Você é disciplinado?","Você termina o que começa?",
-"Você planeja antes de agir?","Você aprende com erros?",
-"Seu nível mental é?"
-],
-personalidade:[
-"Você é racional?","Você prefere liderar?","Você se adapta bem?",
-"Você age por lógica?","Você é comunicativo?",
-"Você gosta de rotina?","Você reage bem a conflitos?",
-"Você improvisa fácil?","Você toma decisões rápidas?",
-"Seu perfil geral é?"
-]
-};
+    nivel: [
+      { q:'Você mantém a calma sob pressão?', o:['Sim','Às vezes','Não'], p:[3,2,1] },
+      { q:'Você aprende rápido?', o:['Sim','Mais ou menos','Não'], p:[3,2,1] },
+      { q:'Você se concentra fácil?', o:['Sim','Às vezes','Não'], p:[3,2,1] },
+      { q:'Você planeja antes de agir?', o:['Sempre','Às vezes','Nunca'], p:[3,2,1] },
+      { q:'Você termina o que começa?', o:['Sempre','Às vezes','Nunca'], p:[3,2,1] },
+      { q:'Você controla emoções?', o:['Bem','Mais ou menos','Mal'], p:[3,2,1] },
+      { q:'Seu foco diário é:', o:['Alto','Médio','Baixo'], p:[3,2,1] },
+      { q:'Você aprende com erros?', o:['Sempre','Às vezes','Nunca'], p:[3,2,1] },
+      { q:'Você é disciplinado?', o:['Sim','Mais ou menos','Não'], p:[3,2,1] },
+      { q:'Seu nível mental hoje é:', o:['Alto','Médio','Baixo'], p:[3,2,1] }
+    ],
 
-function startTest(type){
-currentType=type;
-index=0;
-document.getElementById("home").style.display="none";
-document.getElementById("quiz").style.display="block";
-loadQuestion();
-}
+    personalidade: [
+      { q:'Você toma decisões com base em:', o:['Lógica','Equilíbrio','Emoção'], p:[3,2,1] },
+      { q:'Você prefere trabalhar:', o:['Liderando','Equipe','Sozinho'], p:[3,2,1] },
+      { q:'Em grupos você:', o:['Se destaca','Participa','Observa'], p:[3,2,1] },
+      { q:'Você se adapta a mudanças?', o:['Fácil','Às vezes','Difícil'], p:[3,2,1] },
+      { q:'Você reage a conflitos:', o:['Calmo','Emocional','Evita'], p:[3,2,1] },
+      { q:'Você prefere rotina ou novidade?', o:['Novidade','Equilíbrio','Rotina'], p:[3,2,1] },
+      { q:'Você é mais:', o:['Estratégico','Flexível','Impulsivo'], p:[3,2,1] },
+      { q:'Você lida bem com pressão?', o:['Sim','Às vezes','Não'], p:[3,2,1] },
+      { q:'Você se considera:', o:['Extrovertido','Equilibrado','Introvertido'], p:[3,2,1] },
+      { q:'Seu perfil geral é:', o:['Planejador','Adaptável','Reativo'], p:[3,2,1] }
+    ]
+  };
 
-function loadQuestion(){
-document.getElementById("question").innerText=quizzes[currentType][index];
-document.getElementById("options").innerHTML=
-"<div class='option' onclick='next()'>Sim</div>"+
-"<div class='option' onclick='next()'>Às vezes</div>"+
-"<div class='option' onclick='next()'>Não</div>";
-document.getElementById("bar").style.width=((index+1)/10*100)+"%";
-}
+  let currentQuiz = [], index = 0, score = 0, quizType = '';
 
-function next(){
-index++;
-if(index<10) loadQuestion();
-else{
-document.getElementById("quiz").style.display="none";
-document.getElementById("loading").style.display="block";
-setTimeout(showResult,2000);
-}
-}
+  function startTest(type) {
+    quizType = type;
+    currentQuiz = quizzes[type];
+    index = 0;
+    score = 0;
+    document.getElementById('home').style.display = 'none';
+    document.getElementById('result').style.display = 'none';
+    document.getElementById('quiz').style.display = 'block';
+    loadQuestion();
+  }
 
-function showResult(){
-document.getElementById("loading").style.display="none";
-document.getElementById("result").style.display="block";
+  function loadQuestion() {
+    const q = currentQuiz[index];
+    document.getElementById('question').innerText = q.q;
+    document.getElementById('options').innerHTML = q.o.map((opt,i) =>
+      `<div class="option" onclick="next(${q.p[i]})">${opt}</div>`
+    ).join('');
+    document.getElementById('bar').style.width = ((index+1)/currentQuiz.length*100)+'%';
+  }
 
-if(currentType==="futuro"){
-resultTitle.innerText="Futuro Financeiro Promissor";
-resultText.innerText="Seu perfil indica estabilidade e crescimento financeiro acima da média.";
-}
-if(currentType==="nivel"){
-resultTitle.innerText="Alto Nível Mental";
-resultText.innerText="Sua capacidade cognitiva está acima de 80% das pessoas.";
-}
-if(currentType==="personalidade"){
-resultTitle.innerText="Perfil Estratégico";
-resultText.innerText="Você age com lógica, adaptação e controle emocional.";
-}
-}
+  function next(points) {
+    score += points;
+    index++;
+    if (index < currentQuiz.length) {
+      loadQuestion();
+    } else {
+      document.getElementById('quiz').style.display = 'none';
+      document.getElementById('loading').style.display = 'block';
+      setTimeout(showResult, 2000);
+    }
+  }
 
-function goAffiliate(){
-window.location.href="https://SEULINKAFILIADO.com";
-}
+  function showResult() {
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('result').style.display = 'block';
+
+    let title = '', text = '';
+
+    if (quizType === 'futuro') {
+      if (score >= 25) {
+        title = '🔮 Perfil Financeiro Estratégico';
+        text = `Pontuação: ${score}/30 — Você pensa à frente da maioria e tem alto potencial financeiro.`;
+      } else if (score >= 18) {
+        title = '💰 Perfil Financeiro Estável';
+        text = `Pontuação: ${score}/30 — Você mantém equilíbrio, mas pode crescer mais.`;
+      } else {
+        title = '⚠️ Perfil Financeiro de Risco';
+        text = `Pontuação: ${score}/30 — Atenção: mudanças podem transformar seu futuro.`;
+      }
+    }
+
+    if (quizType === 'nivel') {
+      if (score >= 25) {
+        title = '🧠 Nível Mental Elevado';
+        text = `Pontuação: ${score}/30 — Seu foco e controle mental estão acima da média.`;
+      } else if (score >= 18) {
+        title = '🧩 Nível Mental Médio';
+        text = `Pontuação: ${score}/30 — Bom equilíbrio, com espaço para evolução.`;
+      } else {
+        title = '🔄 Nível Mental em Desenvolvimento';
+        text = `Pontuação: ${score}/30 — Seu potencial cresce com prática e disciplina.`;
+      }
+    }
+
+    if (quizType === 'personalidade') {
+      if (score >= 25) {
+        title = '👤 Personalidade Estratégica';
+        text = `Pontuação: ${score}/30 — Você lidera e pensa de forma lógica.`;
+      } else if (score >= 18) {
+        title = '👥 Personalidade Flexível';
+        text = `Pontuação: ${score}/30 — Você se adapta bem aos cenários.`;
+      } else {
+        title = '🎭 Personalidade Emocional';
+        text = `Pontuação: ${score}/30 — Emoções guiam muitas decisões.`;
+      }
+    }
+
+    document.getElementById('resultTitle').innerText = title;
+    document.getElementById('resultText').innerText = text;
+  }
+
+  function goAffiliate() {
+    window.location.href = 'https://SEULINKAFILIADO.com';
+  }
+</script>
+
 </script>
 <footer style="text-align:center; padding:25px; font-size:14px; opacity:0.7;">
   <a href="privacidade.html" style="color:#fff; margin:0 8px;">Política de Privacidade</a> •
