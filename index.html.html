@@ -119,6 +119,74 @@ quiz.style.display='block';
 loadQuestion();
 }
 
+<script>
+const quizzes = {
+  futuro:[
+    {q:'Você pensa no seu futuro financeiro?',o:['Sempre','Às vezes','Nunca'],p:[3,2,1]},
+    {q:'Você planeja seus gastos?',o:['Sempre','Às vezes','Nunca'],p:[3,2,1]},
+    {q:'Você guarda dinheiro?',o:['Sim','Às vezes','Não'],p:[3,2,1]},
+    {q:'Você investe?',o:['Sempre','Às vezes','Nunca'],p:[3,2,1]},
+    {q:'Você busca renda extra?',o:['Sempre','Às vezes','Nunca'],p:[3,2,1]},
+    {q:'Você estuda finanças?',o:['Sempre','Às vezes','Nunca'],p:[3,2,1]},
+    {q:'Você controla dívidas?',o:['Bem','Mais ou menos','Mal'],p:[3,2,1]},
+    {q:'Você pensa antes de gastar?',o:['Sempre','Às vezes','Nunca'],p:[3,2,1]},
+    {q:'Você aprende com erros financeiros?',o:['Sim','Às vezes','Não'],p:[3,2,1]},
+    {q:'Seu futuro financeiro tende a ser:',o:['Próspero','Estável','Incerto'],p:[3,2,1]}
+  ],
+  nivel:[
+    {q:'Você mantém a calma sob pressão?',o:['Sim','Às vezes','Não'],p:[3,2,1]},
+    {q:'Você aprende rápido?',o:['Sim','Mais ou menos','Não'],p:[3,2,1]},
+    {q:'Você se concentra fácil?',o:['Sim','Às vezes','Não'],p:[3,2,1]},
+    {q:'Você planeja antes de agir?',o:['Sempre','Às vezes','Nunca'],p:[3,2,1]},
+    {q:'Você termina o que começa?',o:['Sempre','Às vezes','Nunca'],p:[3,2,1]},
+    {q:'Você controla emoções?',o:['Bem','Mais ou menos','Mal'],p:[3,2,1]},
+    {q:'Seu foco diário é:',o:['Alto','Médio','Baixo'],p:[3,2,1]},
+    {q:'Você aprende com erros?',o:['Sempre','Às vezes','Nunca'],p:[3,2,1]},
+    {q:'Você é disciplinado?',o:['Sim','Mais ou menos','Não'],p:[3,2,1]},
+    {q:'Seu nível mental hoje é:',o:['Alto','Médio','Baixo'],p:[3,2,1]}
+  ],
+  personalidade:[
+    {q:'Você toma decisões com base em:',o:['Lógica','Equilíbrio','Emoção'],p:[3,2,1]},
+    {q:'Você prefere trabalhar:',o:['Liderando','Equipe','Sozinho'],p:[3,2,1]},
+    {q:'Em grupos você:',o:['Se destaca','Participa','Observa'],p:[3,2,1]},
+    {q:'Você se adapta a mudanças?',o:['Fácil','Às vezes','Difícil'],p:[3,2,1]},
+    {q:'Você reage a conflitos:',o:['Calmo','Emocional','Evita'],p:[3,2,1]},
+    {q:'Você prefere rotina ou novidade?',o:['Novidade','Equilíbrio','Rotina'],p:[3,2,1]},
+    {q:'Você é mais:',o:['Estratégico','Flexível','Impulsivo'],p:[3,2,1]},
+    {q:'Você lida bem com pressão?',o:['Sim','Às vezes','Não'],p:[3,2,1]},
+    {q:'Você se considera:',o:['Extrovertido','Equilibrado','Introvertido'],p:[3,2,1]},
+    {q:'Seu perfil geral é:',o:['Planejador','Adaptável','Reativo'],p:[3,2,1]}
+  ]
+};
+
+let currentQuiz=[],index=0,score=0,quizType='';
+
+const home=document.getElementById('home');
+const quiz=document.getElementById('quiz');
+const preResult=document.getElementById('preResult');
+const result=document.getElementById('result');
+const question=document.getElementById('question');
+const options=document.getElementById('options');
+const bar=document.getElementById('bar');
+const resultTitle=document.getElementById('resultTitle');
+const resultScore=document.getElementById('resultScore');
+const resultBar=document.getElementById('resultBar');
+const resultText=document.getElementById('resultText');
+const resultHint=document.getElementById('resultHint');
+const wpp=document.getElementById('wpp');
+const x=document.getElementById('x');
+const fb=document.getElementById('fb');
+
+function startTest(type){
+quizType=type;
+currentQuiz=quizzes[type];
+index=0;score=0;
+home.style.display='none';
+result.style.display='none';
+quiz.style.display='block';
+loadQuestion();
+}
+
 function loadQuestion(){
 const q=currentQuiz[index];
 question.innerText=q.q;
@@ -166,14 +234,14 @@ resultText.innerText=desc;
 resultHint.innerText=hint;
 
 const textShare=`Acabei de fazer um teste no MindFuturo e meu resultado foi ${percent}% 👉`;
-const url=encodeURIComponent(window.location.href);
+const url=encodeURIComponent(location.href);
 wpp.href=`https://wa.me/?text=${encodeURIComponent(textShare)}%20${url}`;
 x.href=`https://twitter.com/intent/tweet?text=${encodeURIComponent(textShare)}&url=${url}`;
 fb.href=`https://www.facebook.com/sharer/sharer.php?u=${url}`;
 }
 
 function goAffiliate(){
-window.location.href='https://SEULINKAFILIADO.com';
+location.href='https://SEULINKAFILIADO.com';
 }
 </script>
 
