@@ -7,7 +7,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<!-- Google AdSense -->
+<!-- Google AdSense  -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7259203922421146" crossorigin="anonymous"></script>
 
 <style>
@@ -78,7 +78,7 @@ font-size:14px
 <div id="options"></div>
 </section>
 
-<!-- TELA INTERMEDIÁRIA -->
+
 <section class="screen" id="preResult">
 <h2>🔍 Analisando suas respostas...</h2>
 <p>Seu resultado exclusivo está quase pronto.</p>
@@ -229,10 +229,10 @@ function showResult(){
   resultText.innerText=desc;
   resultHint.innerText=hint;
 
-  // SALVA NO LOCALSTORAGE
+
   localStorage.setItem('mindFuturoLastResult', JSON.stringify({percent, title, desc}));
 
-  // MOSTRA ÚLTIMO RESULTADO
+  
   const last = JSON.parse(localStorage.getItem('mindFuturoLastResult'));
   if(last) lastResult.innerText=`Último resultado: ${last.title} (${last.percent}%)`;
 
