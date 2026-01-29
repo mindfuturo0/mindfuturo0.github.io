@@ -4,46 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MindFuturo • Testes Inteligentes</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7259203922421146" crossorigin="anonymous"></script>
-
-<style>
-*{box-sizing:border-box}
-body{
-margin:0;font-family:Poppins,sans-serif;
-background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
-color:#fff}
-header{text-align:center;padding:50px 20px}
-.container{max-width:1100px;margin:auto;padding:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px}
-.card{background:rgba(255,255,255,.08);border-radius:20px;padding:25px;cursor:pointer;transition:.3s}
-.card:hover{transform:scale(1.05);background:rgba(255,255,255,.15)}
-.screen{display:none;max-width:700px;margin:auto;padding:30px}
-.option{background:rgba(255,255,255,.1);padding:15px;margin-bottom:10px;border-radius:12px;cursor:pointer}
-.option:hover{background:rgba(255,255,255,.25)}
-.progress{height:8px;background:rgba(255,255,255,.2);border-radius:10px;margin-bottom:20px}
-.progress div{height:100%;background:#00c6ff;width:0}
-.cta{margin-top:30px;background:linear-gradient(135deg,#00c6ff,#0072ff);padding:18px;border-radius:15px;text-align:center;cursor:pointer}
-</style>
-</head>
-
-<body>
-
-<header>
-<h1>🔮 MindFuturo</h1>
-<p>Descubra padrões ocultos sobre sua mente, decisões e futuro</p>
-<div class="cta" onclick="document.getElementById('home').scrollIntoView({behavior:'smooth'})">Começar agora</div>
-</header>
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MindFuturo • Testes Inteligentes</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<!-- Google AdSense -->
+<!-- Google AdSense (NÃO MEXI) -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7259203922421146" crossorigin="anonymous"></script>
 
 <style>
@@ -96,144 +60,108 @@ header{text-align:center;padding:50px 20px}
 </section>
 
 <script>
-  const quizzes = {
-    futuro: [
-      { q:'Você pensa no seu futuro financeiro?', o:['Sempre','Às vezes','Nunca'], p:[3,2,1] },
-      { q:'Você planeja seus gastos?', o:['Sempre','Às vezes','Nunca'], p:[3,2,1] },
-      { q:'Você guarda dinheiro?', o:['Sim','Às vezes','Não'], p:[3,2,1] },
-      { q:'Você investe?', o:['Sempre','Às vezes','Nunca'], p:[3,2,1] },
-      { q:'Você busca renda extra?', o:['Sempre','Às vezes','Nunca'], p:[3,2,1] },
-      { q:'Você estuda finanças?', o:['Sempre','Às vezes','Nunca'], p:[3,2,1] },
-      { q:'Você controla dívidas?', o:['Bem','Mais ou menos','Mal'], p:[3,2,1] },
-      { q:'Você pensa antes de gastar?', o:['Sempre','Às vezes','Nunca'], p:[3,2,1] },
-      { q:'Você aprende com erros financeiros?', o:['Sim','Às vezes','Não'], p:[3,2,1] },
-      { q:'Seu futuro financeiro tende a ser:', o:['Próspero','Estável','Incerto'], p:[3,2,1] }
-    ],
+const quizzes = {
+  futuro: [
+    { q:'Você pensa no seu futuro financeiro?', o:['Sempre','Às vezes','Nunca'], p:[3,2,1] },
+    { q:'Você planeja seus gastos?', o:['Sempre','Às vezes','Nunca'], p:[3,2,1] },
+    { q:'Você guarda dinheiro?', o:['Sim','Às vezes','Não'], p:[3,2,1] },
+    { q:'Você investe?', o:['Sempre','Às vezes','Nunca'], p:[3,2,1] },
+    { q:'Você busca renda extra?', o:['Sempre','Às vezes','Nunca'], p:[3,2,1] },
+    { q:'Você estuda finanças?', o:['Sempre','Às vezes','Nunca'], p:[3,2,1] },
+    { q:'Você controla dívidas?', o:['Bem','Mais ou menos','Mal'], p:[3,2,1] },
+    { q:'Você pensa antes de gastar?', o:['Sempre','Às vezes','Nunca'], p:[3,2,1] },
+    { q:'Você aprende com erros financeiros?', o:['Sim','Às vezes','Não'], p:[3,2,1] },
+    { q:'Seu futuro financeiro tende a ser:', o:['Próspero','Estável','Incerto'], p:[3,2,1] }
+  ],
 
-    nivel: [
-      { q:'Você mantém a calma sob pressão?', o:['Sim','Às vezes','Não'], p:[3,2,1] },
-      { q:'Você aprende rápido?', o:['Sim','Mais ou menos','Não'], p:[3,2,1] },
-      { q:'Você se concentra fácil?', o:['Sim','Às vezes','Não'], p:[3,2,1] },
-      { q:'Você planeja antes de agir?', o:['Sempre','Às vezes','Nunca'], p:[3,2,1] },
-      { q:'Você termina o que começa?', o:['Sempre','Às vezes','Nunca'], p:[3,2,1] },
-      { q:'Você controla emoções?', o:['Bem','Mais ou menos','Mal'], p:[3,2,1] },
-      { q:'Seu foco diário é:', o:['Alto','Médio','Baixo'], p:[3,2,1] },
-      { q:'Você aprende com erros?', o:['Sempre','Às vezes','Nunca'], p:[3,2,1] },
-      { q:'Você é disciplinado?', o:['Sim','Mais ou menos','Não'], p:[3,2,1] },
-      { q:'Seu nível mental hoje é:', o:['Alto','Médio','Baixo'], p:[3,2,1] }
-    ],
+  nivel: [
+    { q:'Você mantém a calma sob pressão?', o:['Sim','Às vezes','Não'], p:[3,2,1] },
+    { q:'Você aprende rápido?', o:['Sim','Mais ou menos','Não'], p:[3,2,1] },
+    { q:'Você se concentra fácil?', o:['Sim','Às vezes','Não'], p:[3,2,1] },
+    { q:'Você planeja antes de agir?', o:['Sempre','Às vezes','Nunca'], p:[3,2,1] },
+    { q:'Você termina o que começa?', o:['Sempre','Às vezes','Nunca'], p:[3,2,1] },
+    { q:'Você controla emoções?', o:['Bem','Mais ou menos','Mal'], p:[3,2,1] },
+    { q:'Seu foco diário é:', o:['Alto','Médio','Baixo'], p:[3,2,1] },
+    { q:'Você aprende com erros?', o:['Sempre','Às vezes','Nunca'], p:[3,2,1] },
+    { q:'Você é disciplinado?', o:['Sim','Mais ou menos','Não'], p:[3,2,1] },
+    { q:'Seu nível mental hoje é:', o:['Alto','Médio','Baixo'], p:[3,2,1] }
+  ],
 
-    personalidade: [
-      { q:'Você toma decisões com base em:', o:['Lógica','Equilíbrio','Emoção'], p:[3,2,1] },
-      { q:'Você prefere trabalhar:', o:['Liderando','Equipe','Sozinho'], p:[3,2,1] },
-      { q:'Em grupos você:', o:['Se destaca','Participa','Observa'], p:[3,2,1] },
-      { q:'Você se adapta a mudanças?', o:['Fácil','Às vezes','Difícil'], p:[3,2,1] },
-      { q:'Você reage a conflitos:', o:['Calmo','Emocional','Evita'], p:[3,2,1] },
-      { q:'Você prefere rotina ou novidade?', o:['Novidade','Equilíbrio','Rotina'], p:[3,2,1] },
-      { q:'Você é mais:', o:['Estratégico','Flexível','Impulsivo'], p:[3,2,1] },
-      { q:'Você lida bem com pressão?', o:['Sim','Às vezes','Não'], p:[3,2,1] },
-      { q:'Você se considera:', o:['Extrovertido','Equilibrado','Introvertido'], p:[3,2,1] },
-      { q:'Seu perfil geral é:', o:['Planejador','Adaptável','Reativo'], p:[3,2,1] }
-    ]
-  };
+  personalidade: [
+    { q:'Você toma decisões com base em:', o:['Lógica','Equilíbrio','Emoção'], p:[3,2,1] },
+    { q:'Você prefere trabalhar:', o:['Liderando','Equipe','Sozinho'], p:[3,2,1] },
+    { q:'Em grupos você:', o:['Se destaca','Participa','Observa'], p:[3,2,1] },
+    { q:'Você se adapta a mudanças?', o:['Fácil','Às vezes','Difícil'], p:[3,2,1] },
+    { q:'Você reage a conflitos:', o:['Calmo','Emocional','Evita'], p:[3,2,1] },
+    { q:'Você prefere rotina ou novidade?', o:['Novidade','Equilíbrio','Rotina'], p:[3,2,1] },
+    { q:'Você é mais:', o:['Estratégico','Flexível','Impulsivo'], p:[3,2,1] },
+    { q:'Você lida bem com pressão?', o:['Sim','Às vezes','Não'], p:[3,2,1] },
+    { q:'Você se considera:', o:['Extrovertido','Equilibrado','Introvertido'], p:[3,2,1] },
+    { q:'Seu perfil geral é:', o:['Planejador','Adaptável','Reativo'], p:[3,2,1] }
+  ]
+};
 
-  let currentQuiz = [], index = 0, score = 0, quizType = '';
+let currentQuiz=[], index=0, score=0, quizType='';
 
-  function startTest(type) {
-    quizType = type;
-    currentQuiz = quizzes[type];
-    index = 0;
-    score = 0;
-    document.getElementById('home').style.display = 'none';
-    document.getElementById('result').style.display = 'none';
-    document.getElementById('quiz').style.display = 'block';
-    loadQuestion();
+function startTest(type){
+  quizType=type;
+  currentQuiz=quizzes[type];
+  index=0; score=0;
+  document.getElementById('home').style.display='none';
+  document.getElementById('result').style.display='none';
+  document.getElementById('quiz').style.display='block';
+  loadQuestion();
+}
+
+function loadQuestion(){
+  const q=currentQuiz[index];
+  document.getElementById('question').innerText=q.q;
+  document.getElementById('options').innerHTML=q.o.map((opt,i)=>`<div class="option" onclick="next(${q.p[i]})">${opt}</div>`).join('');
+  document.getElementById('bar').style.width=((index+1)/currentQuiz.length*100)+'%';
+}
+
+function next(p){
+  score+=p; index++;
+  if(index<currentQuiz.length) loadQuestion();
+  else{
+    document.getElementById('quiz').style.display='none';
+    document.getElementById('loading').style.display='block';
+    setTimeout(showResult,2000);
+  }
+}
+
+function showResult(){
+  document.getElementById('loading').style.display='none';
+  document.getElementById('result').style.display='block';
+
+  let title='',text='';
+  if(quizType==='futuro'){
+    title=score>=25?'🔮 Perfil Financeiro Estratégico':score>=18?'💰 Perfil Financeiro Estável':'⚠️ Perfil Financeiro de Risco';
+    text=`Pontuação: ${score}/30`;
+  }
+  if(quizType==='nivel'){
+    title=score>=25?'🧠 Nível Mental Elevado':score>=18?'🧩 Nível Mental Médio':'🔄 Nível Mental em Desenvolvimento';
+    text=`Pontuação: ${score}/30`;
+  }
+  if(quizType==='personalidade'){
+    title=score>=25?'👤 Personalidade Estratégica':score>=18?'👥 Personalidade Flexível':'🎭 Personalidade Emocional';
+    text=`Pontuação: ${score}/30`;
   }
 
-  function loadQuestion() {
-    const q = currentQuiz[index];
-    document.getElementById('question').innerText = q.q;
-    document.getElementById('options').innerHTML = q.o.map((opt,i) =>
-      `<div class="option" onclick="next(${q.p[i]})">${opt}</div>`
-    ).join('');
-    document.getElementById('bar').style.width = ((index+1)/currentQuiz.length*100)+'%';
-  }
+  document.getElementById('resultTitle').innerText=title;
+  document.getElementById('resultText').innerText=text;
+}
 
-  function next(points) {
-    score += points;
-    index++;
-    if (index < currentQuiz.length) {
-      loadQuestion();
-    } else {
-      document.getElementById('quiz').style.display = 'none';
-      document.getElementById('loading').style.display = 'block';
-      setTimeout(showResult, 2000);
-    }
-  }
-
-  function showResult() {
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('result').style.display = 'block';
-
-    let title = '', text = '';
-
-    if (quizType === 'futuro') {
-      if (score >= 25) {
-        title = '🔮 Perfil Financeiro Estratégico';
-        text = `Pontuação: ${score}/30 — Você pensa à frente da maioria e tem alto potencial financeiro.`;
-      } else if (score >= 18) {
-        title = '💰 Perfil Financeiro Estável';
-        text = `Pontuação: ${score}/30 — Você mantém equilíbrio, mas pode crescer mais.`;
-      } else {
-        title = '⚠️ Perfil Financeiro de Risco';
-        text = `Pontuação: ${score}/30 — Atenção: mudanças podem transformar seu futuro.`;
-      }
-    }
-
-    if (quizType === 'nivel') {
-      if (score >= 25) {
-        title = '🧠 Nível Mental Elevado';
-        text = `Pontuação: ${score}/30 — Seu foco e controle mental estão acima da média.`;
-      } else if (score >= 18) {
-        title = '🧩 Nível Mental Médio';
-        text = `Pontuação: ${score}/30 — Bom equilíbrio, com espaço para evolução.`;
-      } else {
-        title = '🔄 Nível Mental em Desenvolvimento';
-        text = `Pontuação: ${score}/30 — Seu potencial cresce com prática e disciplina.`;
-      }
-    }
-
-    if (quizType === 'personalidade') {
-      if (score >= 25) {
-        title = '👤 Personalidade Estratégica';
-        text = `Pontuação: ${score}/30 — Você lidera e pensa de forma lógica.`;
-      } else if (score >= 18) {
-        title = '👥 Personalidade Flexível';
-        text = `Pontuação: ${score}/30 — Você se adapta bem aos cenários.`;
-      } else {
-        title = '🎭 Personalidade Emocional';
-        text = `Pontuação: ${score}/30 — Emoções guiam muitas decisões.`;
-      }
-    }
-
-    document.getElementById('resultTitle').innerText = title;
-    document.getElementById('resultText').innerText = text;
-  }
-
-  function goAffiliate() {
-    window.location.href = 'https://SEULINKAFILIADO.com';
-  }
+function goAffiliate(){
+  window.location.href='https://SEULINKAFILIADO.com';
+}
 </script>
 
-</script>
 <footer style="text-align:center; padding:25px; font-size:14px; opacity:0.7;">
-  <a href="privacidade.html" style="color:#fff; margin:0 8px;">Política de Privacidade</a> •
-  <a href="termos.html" style="color:#fff; margin:0 8px;">Termos de Uso</a> •
-  <a href="contato.html" style="color:#fff; margin:0 8px;">Contato</a>
+<a href="privacidade.html" style="color:#fff; margin:0 8px;">Política de Privacidade</a> •
+<a href="termos.html" style="color:#fff; margin:0 8px;">Termos de Uso</a> •
+<a href="contato.html" style="color:#fff; margin:0 8px;">Contato</a>
 </footer>
 
 </body>
 </html>
-
-<section class="container" id="home">
-<div class="card" oncli
